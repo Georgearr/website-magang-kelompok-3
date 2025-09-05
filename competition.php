@@ -1,11 +1,8 @@
 <?php
-// Database configuration
-require_once 'config.php';
-
 // Get competition ID from URL
 $competition_id = isset($_GET['id']) ? $_GET['id'] : '';
 
-// Competition data
+// Competition data with Google Forms URLs
 $competitions = [
     'trilomba' => [
         'title' => 'Trilomba',
@@ -16,8 +13,8 @@ $competitions = [
             'Waktu maksimal 10 menit untuk semua tahap',
             'Peralatan disediakan panitia'
         ],
-        'prizes' => ['Juara 1: Rp 400.000', 'Juara 2: Rp 250.000', 'Juara 3: Rp 150.000'],
-        'registration_fee' => 'Rp 30.000 per tim'
+        'prizes' => ['Juara 1: Menara Snack', 'Juara 2: Menara Snack', 'Juara 3: Menara Snack'],
+        'google_form_id' => '1FAIpQLSdYourFormIdHere-Trilomba' // Replace with actual Google Form ID
     ],
     'golden-egg' => [
         'title' => 'Golden Egg (Treasure Hunt)',
@@ -28,8 +25,8 @@ $competitions = [
             'Waktu maksimal 30 menit',
             'Dilarang merusak properti sekolah'
         ],
-        'prizes' => ['Juara 1: Rp 500.000', 'Juara 2: Rp 300.000', 'Juara 3: Rp 200.000'],
-        'registration_fee' => 'Rp 25.000 per tim'
+        'prizes' => ['Juara 1: Mystery Box', 'Juara 2: Mystery Box', 'Juara 3: Mystery Box'],
+        'google_form_id' => '1FAIpQLSdYourFormIdHere-GoldenEgg' // Replace with actual Google Form ID
     ],
     'yelyel-kelompok' => [
         'title' => 'Yel-yel Kelompok',
@@ -40,8 +37,8 @@ $competitions = [
             'Tema semangat kebersamaan',
             'Boleh menggunakan properti dan kostum sederhana'
         ],
-        'prizes' => ['Juara 1: Rp 450.000', 'Juara 2: Rp 300.000', 'Juara 3: Rp 200.000'],
-        'registration_fee' => 'Rp 40.000 per tim'
+        'prizes' => ['Juara 1: -', 'Juara 2: -', 'Juara 3: -'],
+        'google_form_id' => '1FAIpQLSdYourFormIdHere-YelYel' // Replace with actual Google Form ID
     ],
     'udara-darat-laut' => [
         'title' => 'Udara Darat Laut',
@@ -52,8 +49,8 @@ $competitions = [
             'Yang salah gerakan akan tereliminasi',
             'Pemenang adalah yang bertahan hingga akhir'
         ],
-        'prizes' => ['Juara 1: Rp 200.000', 'Juara 2: Rp 150.000', 'Juara 3: Rp 100.000'],
-        'registration_fee' => 'Rp 10.000 per peserta'
+        'prizes' => ['Juara 1: -', 'Juara 2: -', 'Juara 3: -'],
+        'google_form_id' => '1FAIpQLSdYourFormIdHere-UdaraDaratLaut' // Replace with actual Google Form ID
     ],
     'box-is-lava' => [
         'title' => 'Box is Lava',
@@ -64,32 +61,10 @@ $competitions = [
             'Tidak boleh menyentuh lantai',
             'Waktu maksimal 15 menit untuk mencapai finish'
         ],
-        'prizes' => ['Juara 1: Rp 350.000', 'Juara 2: Rp 225.000', 'Juara 3: Rp 125.000'],
-        'registration_fee' => 'Rp 35.000 per tim'
+        'prizes' => ['Juara 1: -', 'Juara 2: -', 'Juara 3: -'],
+        'google_form_id' => '1FAIpQLSdYourFormIdHere-BoxIsLava' // Replace with actual Google Form ID
     ]
 ];
-
-// No additional competitions needed - only the main 5 competitions above
-
-// Handle form submission
-if ($_POST && isset($_POST['register'])) {
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $class = mysqli_real_escape_string($conn, $_POST['class']);
-    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $team_name = mysqli_real_escape_string($conn, $_POST['team_name']);
-    $team_members = mysqli_real_escape_string($conn, $_POST['team_members']);
-    $competition = mysqli_real_escape_string($conn, $competition_id);
-    
-    $sql = "INSERT INTO registrations (name, class, phone, email, team_name, team_members, competition, registration_date) 
-            VALUES ('$name', '$class', '$phone', '$email', '$team_name', '$team_members', '$competition', NOW())";
-    
-    if (mysqli_query($conn, $sql)) {
-        $success_message = "Pendaftaran berhasil! Terima kasih telah mendaftar.";
-    } else {
-        $error_message = "Terjadi kesalahan: " . mysqli_error($conn);
-    }
-}
 
 $competition_data = isset($competitions[$competition_id]) ? $competitions[$competition_id] : null;
 
@@ -109,11 +84,21 @@ if (!$competition_data) {
     <link rel="stylesheet" href="competition.css">
 </head>
 <body>
-    <header>
+    <header class="competition-header">
         <div class="container">
-            <a href="index.html" class="back-btn">← Kembali</a>
-            <h1><?php echo $competition_data['title']; ?></h1>
-            <p>Pendaftaran Lomba Memoria Aeterna OSIS</p>
+            <div class="header-top">
+                <a href="index.html" class="back-btn">
+                    <span class="back-icon">←</span>
+                    <span class="back-text">Kembali ke Beranda</span>
+                </a>
+            </div>
+            <div class="header-content">
+                <h1 class="competition-title"><?php echo $competition_data['title']; ?></h1>
+                <p class="competition-subtitle">Pendaftaran Lomba Memoria Aeterna OSIS 2025</p>
+                <div class="competition-badge">
+                    <span class="badge-free">🎉 GRATIS</span>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -143,19 +128,17 @@ if (!$competition_data) {
                     <div class="registration-form">
                         <h2>Form Pendaftaran</h2>
                         
-                        <?php if (isset($success_message)): ?>
-                            <div class="alert alert-success">
-                                <?php echo $success_message; ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="form-info">
+                            <p><strong>Cara Pendaftaran:</strong></p>
+                            <ol>
+                                <li>Isi formulir pendaftaran di bawah ini</li>
+                                <li>Data akan tersimpan otomatis di Google Sheets</li>
+                                <li>Tim panitia akan menghubungi Anda untuk konfirmasi</li>
+                                <li><strong>Pendaftaran GRATIS!</strong></li>
+                            </ol>
+                        </div>
                         
-                        <?php if (isset($error_message)): ?>
-                            <div class="alert alert-error">
-                                <?php echo $error_message; ?>
-                            </div>
-                        <?php endif; ?>
-                        
-                        <form method="POST" action="">
+                        <form id="registration-form" class="custom-form">
                             <div class="form-group">
                                 <label for="name">Nama Lengkap *</label>
                                 <input type="text" id="name" name="name" required>
@@ -191,8 +174,71 @@ if (!$competition_data) {
                                 <label for="agree">Saya menyetujui syarat dan ketentuan lomba</label>
                             </div>
                             
-                            <button type="submit" name="register" class="submit-btn">Daftar Sekarang</button>
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Daftar Sekarang</span>
+                                <span class="btn-loading" style="display: none;">Mengirim...</span>
+                            </button>
                         </form>
+                        
+                        <div id="form-message" class="form-message" style="display: none;"></div>
+                        
+                        <script>
+                        document.getElementById('registration-form').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            
+                            const submitBtn = this.querySelector('.submit-btn');
+                            const btnText = submitBtn.querySelector('.btn-text');
+                            const btnLoading = submitBtn.querySelector('.btn-loading');
+                            const messageDiv = document.getElementById('form-message');
+                            
+                            // Show loading state
+                            btnText.style.display = 'none';
+                            btnLoading.style.display = 'inline';
+                            submitBtn.disabled = true;
+                            
+                            // Get form data
+                            const formData = new URLSearchParams();
+                            // Replace these entry IDs with actual Google Form entry IDs
+                            formData.append('entry.1234567890', document.getElementById('name').value); // Name field
+                            formData.append('entry.0987654321', document.getElementById('class').value); // Class field
+                            formData.append('entry.1122334455', document.getElementById('phone').value); // Phone field
+                            formData.append('entry.5566778899', document.getElementById('email').value); // Email field
+                            formData.append('entry.9988776655', document.getElementById('team_name').value); // Team name field
+                            formData.append('entry.1357924680', document.getElementById('team_members').value); // Team members field
+                            formData.append('entry.2468013579', '<?php echo $competition_id; ?>'); // Competition field
+                            
+                            // Submit to Google Form
+                            const googleFormURL = 'https://docs.google.com/forms/d/e/<?php echo $competition_data['google_form_id']; ?>/formResponse';
+                            
+                            fetch(googleFormURL, {
+                                method: 'POST',
+                                body: formData,
+                                mode: 'no-cors'
+                            })
+                            .then(() => {
+                                // Reset form
+                                this.reset();
+                                
+                                // Show success message
+                                messageDiv.innerHTML = '<div class="alert alert-success">✅ Pendaftaran berhasil! Data Anda telah tersimpan. Tim panitia akan menghubungi Anda segera.</div>';
+                                messageDiv.style.display = 'block';
+                                
+                                // Scroll to message
+                                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                messageDiv.innerHTML = '<div class="alert alert-error">❌ Terjadi kesalahan. Silakan coba lagi atau hubungi panitia.</div>';
+                                messageDiv.style.display = 'block';
+                            })
+                            .finally(() => {
+                                // Reset button state
+                                btnText.style.display = 'inline';
+                                btnLoading.style.display = 'none';
+                                submitBtn.disabled = false;
+                            });
+                        });
+                        </script>
                     </div>
                 </div>
             </div>

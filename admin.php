@@ -60,10 +60,16 @@ if (!isset($_SESSION['admin'])) {
 }
 
 // Get registrations
-$sql = "SELECT * FROM registrations ORDER BY registration_date DESC";
-$result = null;
-if (isset($conn)) {
-    $result = $conn->query($sql);
+$registrations = [];
+try {
+    if (isset($conn)) {
+        $stmt = $conn->prepare("SELECT * FROM registrations ORDER BY registration_date DESC");
+        $stmt->execute();
+        $registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+} catch(PDOException $e) {
+    // Handle error silently for now
+    error_log("Database error: " . $e->getMessage());
 }
 ?>
 
@@ -144,10 +150,10 @@ if (isset($conn)) {
                     </thead>
                     <tbody>
                         <?php
-                        if ($result && $result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
+                        if (count($registrations) > 0) {
+                            foreach($registrations as $row) {
                                 echo "<tr>";
-                                echo "<td>" . $row['id'] . "</td>";
+                                echo "<td>" . htmlspecialchars($row['id']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['class']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
@@ -155,7 +161,7 @@ if (isset($conn)) {
                                 echo "<td>" . htmlspecialchars($row['team_name']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['team_members']) . "</td>";
                                 echo "<td>" . htmlspecialchars($row['competition']) . "</td>";
-                                echo "<td>" . $row['registration_date'] . "</td>";
+                                echo "<td>" . htmlspecialchars($row['registration_date']) . "</td>";
                                 echo "</tr>";
                             }
                         } else {
