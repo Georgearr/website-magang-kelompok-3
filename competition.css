@@ -1,0 +1,197 @@
+/* Competition Detail Page Styles */
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateX(-5px);
+}
+
+.competition-detail {
+    padding: 60px 0;
+    background: white;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.competition-info h2 {
+    color: #d32f2f;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.competition-info h3 {
+    color: #d32f2f;
+    margin: 30px 0 15px 0;
+    font-size: 1.3rem;
+}
+
+.competition-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.competition-info ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.competition-info li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.prizes li {
+    background: #f8f9fa;
+    padding: 10px;
+    border-left: 4px solid #d32f2f;
+    margin-bottom: 10px;
+    list-style: none;
+    margin-left: 0;
+}
+
+.registration-fee {
+    background: linear-gradient(135deg, #d32f2f, #f44336);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.2rem;
+}
+
+/* Registration Form Styles */
+.registration-form {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.registration-form h2 {
+    color: #d32f2f;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d32f2f;
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #d32f2f, #f44336);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #c62828, #e53935);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+}
+
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .registration-form {
+        padding: 25px;
+    }
+    
+    .competition-info h2,
+    .registration-form h2 {
+        font-size: 1.5rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}
