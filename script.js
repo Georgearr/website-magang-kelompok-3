@@ -84,7 +84,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Competition card click handler
 function openCompetition(competitionId) {
-    window.location.href = `competition.php?id=${competitionId}`;
+    window.location.href = `${competitionId}.html`;
 }
 
 // Animations on scroll
