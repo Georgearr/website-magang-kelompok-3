@@ -694,7 +694,7 @@ body {
 }
 
 .logo-icon {
-    font-size: 2rem;
+    margin-top: 10px;
 }
 
 .logo-text {
@@ -702,7 +702,6 @@ body {
     letter-spacing: -2px;
     font-weight: 700;
 }
-
 .nav-menu {
     display: flex;
     list-style: none;
