@@ -1,202 +1,268 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Udara Darat Laut - Memoria Aeterna OSIS</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="competition.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="competition.css" />
+  </head>
+  <body>
     <header class="competition-header">
-        <div class="container">
-            <div class="header-top">
-                <a href="index.html" class="back-btn">
-                    <span class="back-icon">←</span>
-                    <span class="back-text">Kembali ke Beranda</span>
-                </a>
-            </div>
-            <div class="header-content">
-                <h1 class="competition-title">Udara Darat Laut</h1>
-                <p class="competition-subtitle">Pendaftaran Lomba Memoria Aeterna OSIS 2025</p>
-            </div>
+      <div class="container">
+        <div class="header-top">
+          <a href="index.html" class="back-btn">
+            <span class="back-icon">←</span>
+            <span class="back-text">Kembali ke Beranda</span>
+          </a>
         </div>
+        <div class="header-content">
+          <h1 class="competition-title">Udara Darat Laut</h1>
+          <p class="competition-subtitle">
+            Pendaftaran Lomba Memoria Aeterna OSIS 2025
+          </p>
+        </div>
+      </div>
     </header>
 
     <main>
-        <section class="competition-detail">
-            <div class="container">
-                <div class="detail-grid">
-                    <div class="competition-info">
-                        <h2>Deskripsi Lomba</h2>
-                        <p>Permainan klasik dengan gerakan sesuai instruksi: udara (angkat tangan), darat (berdiri), laut (jongkok).</p>
-                        
-                        <h3>Syarat dan Ketentuan</h3>
-                        <ul>
-                            <li>Peserta individual</li>
-                            <li>Mengikuti instruksi dengan cepat dan tepat</li>
-                            <li>Yang salah gerakan akan tereliminasi</li>
-                            <li>Pemenang adalah yang bertahan hingga akhir</li>
-                        </ul>
-                        
-                        <h3>Hadiah</h3>
-                        <ul class="prizes">
-                            <li>Juara 1: -</li>
-                            <li>Juara 2: -</li>
-                            <li>Juara 3: -</li>
-                        </ul>
-                    </div>
+      <section class="competition-detail">
+        <div class="container">
+          <div class="detail-grid">
+            <div class="competition-info">
+              <h2>Deskripsi Lomba</h2>
+              <p>
+                Permainan klasik dengan gerakan sesuai instruksi: udara (angkat
+                tangan), darat (berdiri), laut (jongkok).
+              </p>
 
-                    <div class="registration-form">
-                        <h2>Form Pendaftaran</h2>
-                        
-                        <div class="form-info">
-                            <p><strong>Cara Pendaftaran:</strong></p>
-                            <ol>
-                                <li>Isi formulir pendaftaran di bawah ini</li>
-                                <li>Data akan tersimpan otomatis di Google Sheets</li>
-                                <li>Tim panitia akan menghubungi Anda untuk konfirmasi</li>
-                                <li><strong>Pendaftaran GRATIS!</strong></li>
-                            </ol>
-                            <div class="alert alert-info" style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-left: 4px solid #2196f3; border-radius: 4px;">
-                                <strong>📋 Setup Google Form:</strong> Untuk menggunakan form ini, Anda perlu membuat Google Form dan mengupdate ID form serta entry field ID di JavaScript
-                            </div>
-                        </div>
-                        
-                        <form id="registration-form" class="custom-form">
-                            <div class="form-group">
-                                <label for="name">Nama Lengkap *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="class">Kelas *</label>
-                                <input type="text" id="class" name="class" placeholder="Contoh: XII IPA 1" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Nomor HP/WhatsApp *</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="team_name">Nama Tim (jika diperlukan)</label>
-                                <input type="text" id="team_name" name="team_name">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="team_members">Anggota Tim (jika diperlukan)</label>
-                                <textarea id="team_members" name="team_members" placeholder="Tulis nama-nama anggota tim, pisahkan dengan koma"></textarea>
-                            </div>
-                            
-                            <div class="form-group checkbox-group">
-                                <input type="checkbox" id="agree" required>
-                                <label for="agree">Saya menyetujui syarat dan ketentuan lomba</label>
-                            </div>
-                            
-                            <button type="submit" class="submit-btn">
-                                <span class="btn-text">Daftar Sekarang</span>
-                                <span class="btn-loading" style="display: none;">Mengirim...</span>
-                            </button>
-                        </form>
-                        
-                        <div id="form-message" class="form-message" style="display: none;"></div>
-                        
-                        <script>
-                        // Google Forms configuration for Udara Darat Laut
-                        const GOOGLE_FORM_CONFIG = {
-                            formId: 'YOUR_UDARA_DARAT_LAUT_FORM_ID_HERE',
-                            entries: {
-                                name: 'entry.YOUR_NAME_ENTRY_ID',
-                                class: 'entry.YOUR_CLASS_ENTRY_ID',
-                                phone: 'entry.YOUR_PHONE_ENTRY_ID',
-                                email: 'entry.YOUR_EMAIL_ENTRY_ID',
-                                team_name: 'entry.YOUR_TEAM_NAME_ENTRY_ID',
-                                team_members: 'entry.YOUR_TEAM_MEMBERS_ENTRY_ID',
-                                competition: 'entry.YOUR_COMPETITION_ENTRY_ID'
-                            }
-                        };
+              <h3>Syarat dan Ketentuan</h3>
+              <ul>
+                <li>Peserta individual</li>
+                <li>Mengikuti instruksi dengan cepat dan tepat</li>
+                <li>Yang salah gerakan akan tereliminasi</li>
+                <li>Pemenang adalah yang bertahan hingga akhir</li>
+              </ul>
 
-                        document.getElementById('registration-form').addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            
-                            const submitBtn = this.querySelector('.submit-btn');
-                            const btnText = submitBtn.querySelector('.btn-text');
-                            const btnLoading = submitBtn.querySelector('.btn-loading');
-                            const messageDiv = document.getElementById('form-message');
-                            
-                            // Show loading state
-                            btnText.style.display = 'none';
-                            btnLoading.style.display = 'inline';
-                            submitBtn.disabled = true;
-                            
-                            // Check if Google Form is properly configured
-                            if (GOOGLE_FORM_CONFIG.formId.includes('YOUR_')) {
-                                messageDiv.innerHTML = '<div class="alert alert-warning">⚠️ Google Form belum dikonfigurasi. Silakan setup Google Form ID dan entry field ID terlebih dahulu di file ini</div>';
-                                messageDiv.style.display = 'block';
-                                btnText.style.display = 'inline';
-                                btnLoading.style.display = 'none';
-                                submitBtn.disabled = false;
-                                return;
-                            }
-                            
-                            // Get form data
-                            const formData = new URLSearchParams();
-                            formData.append(GOOGLE_FORM_CONFIG.entries.name, document.getElementById('name').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.class, document.getElementById('class').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.phone, document.getElementById('phone').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.email, document.getElementById('email').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.team_name, document.getElementById('team_name').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.team_members, document.getElementById('team_members').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.competition, 'udara-darat-laut');
-                            
-                            // Submit to Google Form
-                            const googleFormURL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_CONFIG.formId}/formResponse`;
-                            
-                            fetch(googleFormURL, {
-                                method: 'POST',
-                                body: formData,
-                                mode: 'no-cors'
-                            })
-                            .then(() => {
-                                // Reset form
-                                this.reset();
-                                
-                                // Show success message
-                                messageDiv.innerHTML = '<div class="alert alert-success">✅ Pendaftaran berhasil! Data Anda telah tersimpan di Google Sheets. Tim panitia akan menghubungi Anda segera.</div>';
-                                messageDiv.style.display = 'block';
-                                
-                                // Scroll to message
-                                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                                messageDiv.innerHTML = '<div class="alert alert-error">❌ Terjadi kesalahan saat mengirim ke Google Forms. Pastikan form ID dan entry field ID sudah benar.</div>';
-                                messageDiv.style.display = 'block';
-                            })
-                            .finally(() => {
-                                // Reset button state
-                                btnText.style.display = 'inline';
-                                btnLoading.style.display = 'none';
-                                submitBtn.disabled = false;
-                            });
-                        });
-                        </script>
-                    </div>
-                </div>
+              <h3>Hadiah</h3>
+              <ul class="prizes">
+                <li>Juara 1: -</li>
+                <li>Juara 2: -</li>
+                <li>Juara 3: -</li>
+              </ul>
             </div>
-        </section>
+
+            <div class="registration-form">
+              <h2>Form Pendaftaran</h2>
+
+              <div class="form-info">
+                <p><strong>Cara Pendaftaran:</strong></p>
+                <ol>
+                  <li>Isi formulir pendaftaran di bawah ini</li>
+                  <li>Data akan tersimpan otomatis di Google Sheets</li>
+                  <li>Tim panitia akan menghubungi Anda untuk konfirmasi</li>
+                  <li><strong>Pendaftaran GRATIS!</strong></li>
+                </ol>
+                <div
+                  class="alert alert-info"
+                  style="
+                    margin-top: 15px;
+                    padding: 10px;
+                    background: #e3f2fd;
+                    border-left: 4px solid #2196f3;
+                    border-radius: 4px;
+                  "
+                >
+                  <strong>📋 Setup Google Form:</strong> Untuk menggunakan form
+                  ini, Anda perlu membuat Google Form dan mengupdate ID form
+                  serta entry field ID di JavaScript
+                </div>
+              </div>
+
+              <form id="registration-form" class="custom-form">
+                <div class="form-group">
+                  <label for="name">Nama Lengkap *</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="class">Kelas *</label>
+                  <input
+                    type="text"
+                    id="class"
+                    name="class"
+                    placeholder="Contoh: XII IPA 1"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Nomor HP/WhatsApp *</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" />
+                </div>
+
+                <div class="form-group">
+                  <label for="team_name">Nama Tim (jika diperlukan)</label>
+                  <input type="text" id="team_name" name="team_name" />
+                </div>
+
+                <div class="form-group">
+                  <label for="team_members"
+                    >Anggota Tim (jika diperlukan)</label
+                  >
+                  <textarea
+                    id="team_members"
+                    name="team_members"
+                    placeholder="Tulis nama-nama anggota tim, pisahkan dengan koma"
+                  ></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                  <input type="checkbox" id="agree" required />
+                  <label for="agree"
+                    >Saya menyetujui syarat dan ketentuan lomba</label
+                  >
+                </div>
+
+                <button type="submit" class="submit-btn">
+                  <span class="btn-text">Daftar Sekarang</span>
+                  <span class="btn-loading" style="display: none"
+                    >Mengirim...</span
+                  >
+                </button>
+              </form>
+
+              <div
+                id="form-message"
+                class="form-message"
+                style="display: none"
+              ></div>
+
+              <script>
+                // Google Forms configuration for Udara Darat Laut
+                const GOOGLE_FORM_CONFIG = {
+                  formId:
+                    "1FAIpQLSeH_gZutlcnz4ODK7p7UwYq3A07OsLjCE2BA35NRZMfIzsNqQ",
+                  entries: {
+                    name: "entry.2070766372",
+                    class: "entry.2011501280",
+                    phone: "entry.480557631",
+                    email: "entry.1259490763",
+                    team_name: "entry.158032539",
+                    team_members: "entry.1992698984",
+                    competition: "594248183_sentinel",
+                  },
+                };
+
+                document
+                  .getElementById("registration-form")
+                  .addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    const submitBtn = this.querySelector(".submit-btn");
+                    const btnText = submitBtn.querySelector(".btn-text");
+                    const btnLoading = submitBtn.querySelector(".btn-loading");
+                    const messageDiv = document.getElementById("form-message");
+
+                    // Show loading state
+                    btnText.style.display = "none";
+                    btnLoading.style.display = "inline";
+                    submitBtn.disabled = true;
+
+                    // Check if Google Form is properly configured
+                    if (GOOGLE_FORM_CONFIG.formId.includes("YOUR_")) {
+                      messageDiv.innerHTML =
+                        '<div class="alert alert-warning">⚠️ Google Form belum dikonfigurasi. Silakan setup Google Form ID dan entry field ID terlebih dahulu di file ini</div>';
+                      messageDiv.style.display = "block";
+                      btnText.style.display = "inline";
+                      btnLoading.style.display = "none";
+                      submitBtn.disabled = false;
+                      return;
+                    }
+
+                    // Get form data
+                    const formData = new URLSearchParams();
+                    formData.append(
+                      GOOGLE_FORM_CONFIG.entries.name,
+                      document.getElementById("name").value
+                    );
+                    formData.append(
+                      GOOGLE_FORM_CONFIG.entries.class,
+                      document.getElementById("class").value
+                    );
+                    formData.append(
+                      GOOGLE_FORM_CONFIG.entries.phone,
+                      document.getElementById("phone").value
+                    );
+                    formData.append(
+                      GOOGLE_FORM_CONFIG.entries.email,
+                      document.getElementById("email").value
+                    );
+                    formData.append(
+                      GOOGLE_FORM_CONFIG.entries.team_name,
+                      document.getElementById("team_name").value
+                    );
+                    formData.append(
+                      GOOGLE_FORM_CONFIG.entries.team_members,
+                      document.getElementById("team_members").value
+                    );
+                    formData.append(
+                      GOOGLE_FORM_CONFIG.entries.competition,
+                      "udara-darat-laut"
+                    );
+
+                    // Submit to Google Form
+                    const googleFormURL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_CONFIG.formId}/formResponse`;
+
+                    fetch(googleFormURL, {
+                      method: 'POST',
+                      body: formData,
+                      mode: 'no-cors',
+                    })
+                      .then(() => {
+                        // Reset form
+                        this.reset();
+
+                        // Show success message
+                        messageDiv.innerHTML =
+                          '<div class="alert alert-success">✅ Pendaftaran berhasil! Data Anda telah tersimpan di Google Sheets. Tim panitia akan menghubungi Anda segera.</div>';
+                        messageDiv.style.display = "block";
+
+                        // Scroll to message
+                        messageDiv.scrollIntoView({
+                          behavior: "smooth",
+                          block: "center",
+                        });
+                      })
+                      .catch((error) => {
+                        console.error("Error:", error);
+                        messageDiv.innerHTML =
+                          '<div class="alert alert-error">❌ Terjadi kesalahan saat mengirim ke Google Forms. Pastikan form ID dan entry field ID sudah benar.</div>';
+                        messageDiv.style.display = "block";
+                      })
+                      .finally(() => {
+                        // Reset button state
+                        btnText.style.display = "inline";
+                        btnLoading.style.display = "none";
+                        submitBtn.disabled = false;
+                      });
+                  });
+              </script>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Multimedia OSIS Kelompok 3</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2025 Multimedia OSIS Kelompok 3</p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
