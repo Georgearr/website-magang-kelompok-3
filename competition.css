@@ -1,10 +1,12 @@
 /* Competition Page Header */
 .competition-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #1a1a2e 100%);
+    background: #E62727;
     color: white;
-    padding: 20px 0 60px 0;
+    text-align: center;
+    padding: 80px 0 80px 0;
     position: relative;
     overflow: hidden;
+    margin-top: 0;
 }
 
 .competition-header::before {
@@ -14,13 +16,59 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>') repeat;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:%23ff6b35;stop-opacity:0.8" /><stop offset="50%" style="stop-color:%23f7931e;stop-opacity:0.6" /><stop offset="100%" style="stop-color:%23ffcc02;stop-opacity:0.4" /></linearGradient></defs><path fill="url(%23grad1)" d="M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,300 L0,300 Z" /></svg>') no-repeat center;
+    background-size: cover;
+    opacity: 0.3;
     z-index: 1;
 }
 
 .competition-header .container {
     position: relative;
     z-index: 2;
+}
+
+.competition-header .floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.competition-header .shape {
+    position: absolute;
+    background: linear-gradient(45deg, rgba(30, 147, 171, 0.1), rgba(230, 39, 39, 0.1));
+    border-radius: 15px;
+    animation: float 15s infinite ease-in-out;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.competition-header .shape-1 {
+    width: 120px;
+    height: 80px;
+    top: 15%;
+    left: 5%;
+    animation-delay: 0s;
+    transform: rotate(15deg);
+}
+
+.competition-header .shape-2 {
+    width: 100px;
+    height: 140px;
+    top: 65%;
+    left: 85%;
+    animation-delay: 3s;
+    transform: rotate(-20deg);
+}
+
+.competition-header .shape-3 {
+    width: 80px;
+    height: 80px;
+    top: 75%;
+    left: 15%;
+    animation-delay: 6s;
+    transform: rotate(45deg);
 }
 
 .header-top {
@@ -78,23 +126,23 @@
 }
 
 .badge-free {
-    background: linear-gradient(135deg, #00b894, #00cec9);
+    background: linear-gradient(135deg, #1E93AB, #E62727);
     color: white;
     padding: 8px 20px;
     border-radius: 50px;
     font-weight: bold;
     font-size: 0.9rem;
-    box-shadow: 0 3px 10px rgba(0, 184, 148, 0.4);
+    box-shadow: 0 3px 10px rgba(30, 147, 171, 0.4);
 }
 
 /* Custom Form Styles */
 .form-info {
-    background: linear-gradient(135deg, #00b894, #00cec9);
+    background: linear-gradient(135deg, #1E93AB, #E62727);
     color: white;
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 30px;
-    box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+    box-shadow: 0 5px 15px rgba(30, 147, 171, 0.3);
 }
 
 .form-info ol {
@@ -108,251 +156,10 @@
 }
 
 .custom-form {
-    background: #f8f9fa;
+    background: #F3F2EC;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #2e86de;
-    box-shadow: 0 0 0 3px rgba(46, 134, 222, 0.1);
-}
-
-.form-group textarea {
-    min-height: 80px;
-    resize: vertical;
-}
-
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.checkbox-group input[type="checkbox"] {
-    width: auto;
-    margin: 0;
-}
-
-.submit-btn {
-    width: 100%;
-    background: linear-gradient(135deg, #2e86de, #74b9ff);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(46, 134, 222, 0.3);
-}
-
-.submit-btn:hover:not(:disabled) {
-    background: linear-gradient(135deg, #0984e3, #6c5ce7);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(46, 134, 222, 0.4);
-}
-
-.submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.form-message {
-    margin-top: 20px;
-}
-
-.alert {
-    padding: 15px 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.alert-success {
-    background: linear-gradient(135deg, #00b894, #00cec9);
-    color: white;
-    border-left: 5px solid #00a085;
-}
-
-.alert-error {
-    background: linear-gradient(135deg, #e17055, #fd79a8);
-    color: white;
-    border-left: 5px solid #d63031;
-}
-
-.competition-detail {
-    padding: 40px 0 60px 0;
-    background: #f8f9fa;
-}
-
-.detail-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    max-width: 1200px;
-    margin: -40px auto 0 auto;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 3;
-}
-
-.competition-info h2 {
-    color: #d32f2f;
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-.competition-info h3 {
-    color: #d32f2f;
-    margin: 30px 0 15px 0;
-    font-size: 1.3rem;
-}
-
-.competition-info p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.competition-info ul {
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-
-.competition-info li {
-    margin-bottom: 8px;
-    line-height: 1.5;
-}
-
-.prizes li {
-    background: #f8f9fa;
-    padding: 10px;
-    border-left: 4px solid #d32f2f;
-    margin-bottom: 10px;
-    list-style: none;
-    margin-left: 0;
-}
-
-.registration-fee {
-    background: linear-gradient(135deg, #d32f2f, #f44336);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-top: 30px;
-    font-size: 1.2rem;
-}
-
-/* Registration Form Styles */
-.competition-info {
-    padding: 50px 40px;
-    border-right: 1px solid #eee;
-}
-
-.registration-form {
-    background: #f8f9fa;
-    padding: 50px 40px;
-}
-
-.registration-form h2 {
-    color: #2e86de;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-/* Responsive Design for Competition Page */
-@media (max-width: 768px) {
-    .competition-header {
-        padding: 15px 0 40px 0;
-    }
-    
-    .competition-title {
-        font-size: 2rem;
-    }
-    
-    .competition-subtitle {
-        font-size: 1rem;
-    }
-    
-    .detail-grid {
-        grid-template-columns: 1fr;
-        margin-top: -20px;
-    }
-    
-    .competition-info {
-        padding: 30px 25px;
-        border-right: none;
-        border-bottom: 1px solid #eee;
-    }
-    
-    .registration-form {
-        padding: 30px 25px;
-    }
-    
-    .custom-form {
-        padding: 25px 20px;
-    }
-    
-    .hero-actions {
-        gap: 15px;
-    }
-    
-    .btn {
-        padding: 12px 25px;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .back-btn {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-    
-    .competition-title {
-        font-size: 1.8rem;
-    }
-    
-    .competition-info,
-    .registration-form {
-        padding: 25px 20px;
-    }
-    
-    .custom-form {
-        padding: 20px 15px;
-    }
-}
-    font-size: 2rem;
 }
 
 .form-group {
@@ -438,23 +245,179 @@
     border: 1px solid #f5c6cb;
 }
 
-/* Responsive Design */
+.competition-detail {
+    padding: 40px 0 60px 0;
+    background: #F3F2EC;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: -40px auto 0 auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 3;
+}
+
+.competition-info h2 {
+    color: #E62727;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.competition-info h3 {
+    color: #E62727;
+    margin: 30px 0 15px 0;
+    font-size: 1.3rem;
+}
+
+.competition-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.competition-info ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.competition-info li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.prizes li {
+    background: #DCDCDC;
+    padding: 10px;
+    border-left: 4px solid #E62727;
+    margin-bottom: 10px;
+    list-style: none;
+    margin-left: 0;
+}
+
+.registration-fee {
+    background: linear-gradient(135deg, #E62727, #1E93AB);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.2rem;
+}
+
+/* Registration Form Styles */
+.competition-info {
+    padding: 50px 40px;
+    border-right: 1px solid #eee;
+}
+
+.registration-form {
+    background: #DCDCDC;
+    padding: 50px 40px;
+}
+
+.registration-form h2 {
+    color: #E62727;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Responsive Design for Competition Page */
+@media (max-width: 768px) {
+    .competition-header {
+        padding: 15px 0 40px 0;
+    }
+
+    .competition-title {
+        font-size: 2rem;
+    }
+
+    .competition-subtitle {
+        font-size: 1rem;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+        margin-top: -20px;
+    }
+
+    .competition-info {
+        padding: 30px 25px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .registration-form {
+        padding: 30px 25px;
+    }
+
+    .custom-form {
+        padding: 25px 20px;
+    }
+
+    .hero-actions {
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .competition-title {
+        font-size: 1.8rem;
+    }
+
+    .competition-info,
+    .registration-form {
+        padding: 25px 20px;
+    }
+
+    .custom-form {
+        padding: 20px 15px;
+    }
+}
 @media (max-width: 768px) {
     .detail-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .registration-form {
         padding: 25px;
     }
-    
+
     .competition-info h2,
     .registration-form h2 {
         font-size: 1.5rem;
     }
-    
+
     header h1 {
         font-size: 2rem;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(15deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(15deg);
+    }
+    100% {
+        transform: translateY(0) rotate(15deg);
     }
 }

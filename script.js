@@ -1,5 +1,46 @@
 // Memoria Aeterna OSIS Website JavaScript
 
+// Navbar highlighting on scroll
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id], main[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    const scrollPosition = window.scrollY + 150; // Adjust offset for better detection
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    // Special handling for competitions section
+    const competitionsSection = document.querySelector('#competitions');
+    if (competitionsSection) {
+        const competitionsTop = competitionsSection.offsetTop;
+        const competitionsBottom = competitionsTop + competitionsSection.offsetHeight;
+        
+        if (scrollPosition >= competitionsTop && scrollPosition < competitionsBottom) {
+            currentSection = 'competitions';
+        }
+    }
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const linkHref = link.getAttribute('href');
+        if (linkHref === '#' + currentSection) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Add scroll event listener
+window.addEventListener('scroll', updateActiveNavLink);
+window.addEventListener('load', updateActiveNavLink);
+
 // Mobile navigation
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
@@ -27,6 +68,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth',
                 block: 'start'
             });
+            
+            // Immediately update active nav link for competitions
+            if (this.getAttribute('href') === '#competitions') {
+                setTimeout(() => {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }, 100);
+            }
         }
     });
 });

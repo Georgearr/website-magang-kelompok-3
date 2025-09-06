@@ -14,7 +14,16 @@ $competitions = [
             'Peralatan disediakan panitia'
         ],
         'prizes' => ['Juara 1: Menara Snack', 'Juara 2: Menara Snack', 'Juara 3: Menara Snack'],
-        'google_form_id' => '1FAIpQLSdYourFormIdHere-Trilomba' // Replace with actual Google Form ID
+        'google_form_id' => '1FAIpQLSdXBxxxxxx-example-trilomba',
+        'google_form_entries' => [
+            'name' => 'entry.1234567890',
+            'class' => 'entry.0987654321',
+            'phone' => 'entry.1122334455',
+            'email' => 'entry.5566778899',
+            'team_name' => 'entry.9988776655',
+            'team_members' => 'entry.1357924680',
+            'competition' => 'entry.2468013579'
+        ]
     ],
     'golden-egg' => [
         'title' => 'Golden Egg (Treasure Hunt)',
@@ -26,7 +35,16 @@ $competitions = [
             'Dilarang merusak properti sekolah'
         ],
         'prizes' => ['Juara 1: Mystery Box', 'Juara 2: Mystery Box', 'Juara 3: Mystery Box'],
-        'google_form_id' => '1FAIpQLSdYourFormIdHere-GoldenEgg' // Replace with actual Google Form ID
+        'google_form_id' => '1FAIpQLSdXBxxxxxx-example-goldenegg',
+        'google_form_entries' => [
+            'name' => 'entry.1234567890',
+            'class' => 'entry.0987654321',
+            'phone' => 'entry.1122334455',
+            'email' => 'entry.5566778899',
+            'team_name' => 'entry.9988776655',
+            'team_members' => 'entry.1357924680',
+            'competition' => 'entry.2468013579'
+        ]
     ],
     'yelyel-kelompok' => [
         'title' => 'Yel-yel Kelompok',
@@ -38,7 +56,16 @@ $competitions = [
             'Boleh menggunakan properti dan kostum sederhana'
         ],
         'prizes' => ['Juara 1: -', 'Juara 2: -', 'Juara 3: -'],
-        'google_form_id' => '1FAIpQLSdYourFormIdHere-YelYel' // Replace with actual Google Form ID
+        'google_form_id' => '1FAIpQLSdXBxxxxxx-example-yelyel',
+        'google_form_entries' => [
+            'name' => 'entry.1234567890',
+            'class' => 'entry.0987654321',
+            'phone' => 'entry.1122334455',
+            'email' => 'entry.5566778899',
+            'team_name' => 'entry.9988776655',
+            'team_members' => 'entry.1357924680',
+            'competition' => 'entry.2468013579'
+        ]
     ],
     'udara-darat-laut' => [
         'title' => 'Udara Darat Laut',
@@ -50,7 +77,16 @@ $competitions = [
             'Pemenang adalah yang bertahan hingga akhir'
         ],
         'prizes' => ['Juara 1: -', 'Juara 2: -', 'Juara 3: -'],
-        'google_form_id' => '1FAIpQLSdYourFormIdHere-UdaraDaratLaut' // Replace with actual Google Form ID
+        'google_form_id' => '1FAIpQLSdXBxxxxxx-example-udaradaratlaut',
+        'google_form_entries' => [
+            'name' => 'entry.1234567890',
+            'class' => 'entry.0987654321',
+            'phone' => 'entry.1122334455',
+            'email' => 'entry.5566778899',
+            'team_name' => 'entry.9988776655',
+            'team_members' => 'entry.1357924680',
+            'competition' => 'entry.2468013579'
+        ]
     ],
     'box-is-lava' => [
         'title' => 'Box is Lava',
@@ -62,7 +98,16 @@ $competitions = [
             'Waktu maksimal 15 menit untuk mencapai finish'
         ],
         'prizes' => ['Juara 1: -', 'Juara 2: -', 'Juara 3: -'],
-        'google_form_id' => '1FAIpQLSdYourFormIdHere-BoxIsLava' // Replace with actual Google Form ID
+        'google_form_id' => '1FAIpQLSdXBxxxxxx-example-boxislava',
+        'google_form_entries' => [
+            'name' => 'entry.1234567890',
+            'class' => 'entry.0987654321',
+            'phone' => 'entry.1122334455',
+            'email' => 'entry.5566778899',
+            'team_name' => 'entry.9988776655',
+            'team_members' => 'entry.1357924680',
+            'competition' => 'entry.2468013579'
+        ]
     ]
 ];
 
@@ -95,9 +140,6 @@ if (!$competition_data) {
             <div class="header-content">
                 <h1 class="competition-title"><?php echo $competition_data['title']; ?></h1>
                 <p class="competition-subtitle">Pendaftaran Lomba Memoria Aeterna OSIS 2025</p>
-                <div class="competition-badge">
-                    <span class="badge-free">🎉 GRATIS</span>
-                </div>
             </div>
         </div>
     </header>
@@ -198,29 +240,51 @@ if (!$competition_data) {
                             
                             // Get form data
                             const formData = new URLSearchParams();
-                            // Replace these entry IDs with actual Google Form entry IDs
-                            formData.append('entry.1234567890', document.getElementById('name').value); // Name field
-                            formData.append('entry.0987654321', document.getElementById('class').value); // Class field
-                            formData.append('entry.1122334455', document.getElementById('phone').value); // Phone field
-                            formData.append('entry.5566778899', document.getElementById('email').value); // Email field
-                            formData.append('entry.9988776655', document.getElementById('team_name').value); // Team name field
-                            formData.append('entry.1357924680', document.getElementById('team_members').value); // Team members field
-                            formData.append('entry.2468013579', '<?php echo $competition_id; ?>'); // Competition field
+                            // Use dynamic entry IDs from PHP configuration
+                            const entries = <?php echo json_encode($competition_data['google_form_entries']); ?>;
+                            
+                            formData.append(entries.name, document.getElementById('name').value);
+                            formData.append(entries.class, document.getElementById('class').value);
+                            formData.append(entries.phone, document.getElementById('phone').value);
+                            formData.append(entries.email, document.getElementById('email').value);
+                            formData.append(entries.team_name, document.getElementById('team_name').value);
+                            formData.append(entries.team_members, document.getElementById('team_members').value);
+                            formData.append(entries.competition, '<?php echo $competition_id; ?>');
                             
                             // Submit to Google Form
                             const googleFormURL = 'https://docs.google.com/forms/d/e/<?php echo $competition_data['google_form_id']; ?>/formResponse';
                             
-                            fetch(googleFormURL, {
-                                method: 'POST',
-                                body: formData,
-                                mode: 'no-cors'
-                            })
+                            // Submit to both Google Forms and local database
+                            Promise.all([
+                                // Submit to Google Forms
+                                fetch(googleFormURL, {
+                                    method: 'POST',
+                                    body: formData,
+                                    mode: 'no-cors'
+                                }),
+                                // Submit to local database for admin panel
+                                fetch('submit_registration.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                    },
+                                    body: new URLSearchParams({
+                                        name: document.getElementById('name').value,
+                                        class: document.getElementById('class').value,
+                                        phone: document.getElementById('phone').value,
+                                        email: document.getElementById('email').value,
+                                        team_name: document.getElementById('team_name').value,
+                                        team_members: document.getElementById('team_members').value,
+                                        competition: '<?php echo $competition_id; ?>'
+                                    })
+                                })
+                            ])
                             .then(() => {
                                 // Reset form
                                 this.reset();
                                 
                                 // Show success message
-                                messageDiv.innerHTML = '<div class="alert alert-success">✅ Pendaftaran berhasil! Data Anda telah tersimpan. Tim panitia akan menghubungi Anda segera.</div>';
+                                messageDiv.innerHTML = '<div class="alert alert-success">✅ Pendaftaran berhasil! Data Anda telah tersimpan di Google Forms dan sistem kami. Tim panitia akan menghubungi Anda segera.</div>';
                                 messageDiv.style.display = 'block';
                                 
                                 // Scroll to message
