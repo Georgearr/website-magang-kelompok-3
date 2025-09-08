@@ -19,7 +19,7 @@ body {
 
 /* Navigation Styles */
 .navbar {
-    background: linear-gradient(to right, #647FBC, #91ADC8);;
+    background: rgb(149, 72, 21);
     padding: 0;
     position: fixed;
     top: 0;
@@ -44,12 +44,12 @@ body {
 /* Clean Hero Section */
 .hero-section {
     min-height: 100vh;
-    background: linear-gradient(to bottom, #91ADC8, #FAFDD6);
+    background: linear-gradient(to bottom, rgb(122, 70, 14),#b14a27, white);
     color: white;
     position: relative;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden;   
 }
 
 .hero-background {
@@ -275,7 +275,6 @@ body {
 .btn-icon {
     font-size: 1.2rem;
 }
-
 .floating-shapes {
     position: absolute;
     width: 100%;
@@ -934,7 +933,7 @@ body {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 30px;
-    color: #E62727;
+    color: rgb(157, 102, 30);
     font-family: 'Arial Black', Arial, sans-serif;
     font-weight: 900;
 }
@@ -967,7 +966,7 @@ body {
 
 .detail-item h3 {
     font-size: 1.3rem;
-    color: #E62727;
+    color: rgb(157, 102, 30);
     margin-bottom: 10px;
 }
 
@@ -979,7 +978,7 @@ body {
 /* Competitions Section */
 .competitions {
     padding: 80px 0 60px 0;
-    background: #E62727;
+    background: linear-gradient(to right, rgb(142, 87, 21),#b85e3f, rgb(190, 164, 164));
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -1031,8 +1030,8 @@ body {
     transition: all 0.3s ease;
     color: #333;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    width: 200px;
-    height: 180px;
+    width: 500px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
