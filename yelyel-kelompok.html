@@ -59,11 +59,12 @@
                                 <li>Tim panitia akan memberikan list peserta lomba di Grup yang telah diberikan.</li>
                             </ol>
                             <div class="alert alert-info" style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-left: 4px solid #2196f3; border-radius: 4px;">
-                                <strong>📋 Setup Google Form:</strong> Untuk menggunakan form ini, Anda perlu membuat Google Form dan mengupdate ID form serta entry field ID di JavaScript
+                                <strong>📋 Pendaftaran Online:</strong> Form ini akan menyimpan data pendaftaran secara otomatis ke Google Sheets
                             </div>
                         </div>
                         
-                        <form id="registration-form" class="custom-form">
+                        <form id="registration-form" class="custom-form" data-competition="Yel-yel Kelompok">
+                            <input type="hidden" name="competition" value="Yel-yel Kelompok">
                             <div class="form-group">
                                 <label for="name">Nama Lengkap *</label>
                                 <input type="text" id="name" name="name" required>
@@ -198,5 +199,6 @@
             <p>&copy; 2025 Multimedia OSIS Kelompok 3</p>
         </div>
     </footer>
+    <script src="form-handler.js"></script>
 </body>
 </html>
