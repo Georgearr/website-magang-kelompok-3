@@ -871,7 +871,7 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: linear-gradient(135deg, #E62727, #1E93AB);
+        background: linear-gradient(to bottom, #b14a27, rgb(122, 70, 14));
         width: 100%;
         text-align: center;
         transition: 0.3s;
