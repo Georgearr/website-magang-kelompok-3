@@ -962,17 +962,27 @@ body {
     background: #DCDCDC;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
 }
 
 .detail-item h3 {
     font-size: 1.3rem;
     color: rgb(157, 102, 30);
-    margin-bottom: 10px;
+    margin: 0;
+    text-align: center;
+    width: 100%;
 }
 
 .detail-item p {
     font-size: 1.1rem;
     font-weight: bold;
+    margin: 0;
+    text-align: center;
+    width: 100%;
 }
 
 /* Competitions Section */
@@ -1024,7 +1034,7 @@ body {
     background: white;
     border: 3px solid #1E93AB;
     border-radius: 15px;
-    padding: 25px 15px;
+    padding: 10px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1068,6 +1078,19 @@ body {
 .competition-card > * {
     position: relative;
     z-index: 2;
+}
+
+.competition-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.competition-card:hover img {
+    transform: scale(1.02);
 }
 
 .card-icon {
@@ -1207,12 +1230,137 @@ body {
     }
 
     .competition-card {
-        min-height: 120px;
-        padding: 20px 15px;
+        width: 280px;
+        height: 350px;
+        padding: 8px;
     }
 
     .container {
         padding: 0 15px;
+    }
+}
+
+/* About Us Section */
+.about-us {
+    background: linear-gradient(135deg, #8B4513 0%, #CD853F 100%);
+    color: white;
+    padding: 80px 0;
+}
+
+.about-us h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.about-us > .container > p {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 50px;
+    opacity: 0.9;
+}
+
+.organization-structure {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.org-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.org-section h3 {
+    color: #FFE4B5;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #FFE4B5;
+    padding-bottom: 10px;
+}
+
+.positions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.position-item {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+.position-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.position-item h4 {
+    color: #FFE4B5;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 100%;
+}
+
+.position-item p {
+    color: white;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+    width: 100%;
+}
+
+/* Responsive Design for About Us */
+@media (max-width: 768px) {
+    .about-us {
+        padding: 60px 0;
+    }
+    
+    .about-us h2 {
+        font-size: 2.2rem;
+    }
+    
+    .org-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .org-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .positions-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .position-item {
+        padding: 15px;
     }
 }
 
@@ -1659,4 +1807,187 @@ footer {
 
 .competition-card:nth-child(5) {
     animation: scaleInUp 0.8s ease-out 1.0s both;
+}
+
+/* Entrance Animation Styles */
+.entrance-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 1s ease-in-out 4s forwards;
+}
+
+.entrance-content {
+    text-align: center;
+    position: relative;
+}
+
+.logo-container {
+    position: relative;
+    margin-bottom: 30px;
+    animation: logoScale 2s ease-out 0.5s both;
+}
+
+.entrance-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    animation: logoGlow 2s ease-in-out 1.5s infinite alternate;
+}
+
+.fire-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,69,0,0.8) 0%, rgba(255,140,0,0.6) 30%, rgba(255,215,0,0.4) 60%, transparent 80%);
+    animation: fireEffect 2s ease-in-out 1s infinite alternate;
+    z-index: 1;
+}
+
+.text-container {
+    animation: textReveal 1.5s ease-out 2s both;
+}
+
+.entrance-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #666;
+    margin-bottom: 20px;
+    letter-spacing: 8px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+.text-left {
+    display: inline-block;
+    animation: slideInLeft 1s ease-out 2.2s both;
+}
+
+.text-right {
+    display: inline-block;
+    animation: slideInRight 1s ease-out 2.4s both;
+}
+
+.entrance-subtitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff4500, #ffa500, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: glowText 2s ease-in-out 3s infinite alternate;
+}
+
+/* Animation Keyframes */
+@keyframes fadeOut {
+    0% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes logoScale {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes logoGlow {
+    0% { box-shadow: 0 0 20px rgba(255,69,0,0.5); }
+    100% { box-shadow: 0 0 40px rgba(255,140,0,0.8); }
+}
+
+@keyframes fireEffect {
+    0% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes textReveal {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    0% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes glowText {
+    0% { 
+        text-shadow: 0 0 10px rgba(255,140,0,0.5);
+        filter: brightness(1);
+    }
+    100% { 
+        text-shadow: 0 0 20px rgba(255,140,0,0.8), 0 0 30px rgba(255,69,0,0.6);
+        filter: brightness(1.2);
+    }
+}
+
+/* Mobile Responsive for Entrance Animation */
+@media (max-width: 768px) {
+    .entrance-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+    }
+    
+    .entrance-subtitle {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .entrance-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .fire-effect {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .entrance-title {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    
+    .entrance-subtitle {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+    }
+    
+    .entrance-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .fire-effect {
+        width: 80px;
+        height: 80px;
+    }
 }

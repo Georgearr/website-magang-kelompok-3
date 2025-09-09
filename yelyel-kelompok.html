@@ -18,7 +18,7 @@
             </div>
             <div class="header-content">
                 <h1 class="competition-title">Yel-yel Kelompok</h1>
-                <p class="competition-subtitle">Pendaftaran Lomba Memoria Aeterna OSIS 2025</p>
+                <p class="competition-subtitle">Pendaftaran Lomba Memoria Aeterna 2025</p>
             </div>
         </div>
     </header>
@@ -29,14 +29,15 @@
                 <div class="detail-grid">
                     <div class="competition-info">
                         <h2>Deskripsi Lomba</h2>
-                        <p>Kompetisi yel-yel kreatif seperti pada waktu MPLS dan perayaan 17 Agustus.</p>
+                        <p>Lomba diikuti setiap kelas, posisi awal peserta akan berada di lapangan basket igs dan dimulai dari kelas 12 IPS 4 akan memutari sekolah sampai ke depan lobby lalu melakukan yelyel di depan dewan juri, setelah selesai melakukan yelyel maka kelas akan lanjut memutari halaman depan sekolah dan kembali ke lapangan basket, begitu terus akan dilakukan setiap kelasnya. penilaian juri mulai dari semangat, kreativitas, kekompakan, dan suara.</p>
                         
                         <h3>Syarat dan Ketentuan</h3>
                         <ul>
-                            <li>Tim terdiri dari 8-15 orang</li>
-                            <li>Durasi yel-yel 3-5 menit</li>
-                            <li>Tema semangat kebersamaan</li>
-                            <li>Boleh menggunakan properti dan kostum sederhana</li>
+                            <li>Yel-yel berdurasi minimal 1 menit dan maksimal 3 menit.</li>
+                            <li>Tidak memakai properti yang dapat membahayakan sesama teman.</li>
+                            <li>⁠Lirik ataupun konsep yel-yel tidak boleh mengandung SARA.</li>
+                            <li>Kelas harus mengikuti arahan panitia yang bertugas demi kelancaran.</li>
+                            <li>Keputusan dan penilaian juri tidak dapat diganggu gugat.</li>
                         </ul>
                         
                         <h3>Hadiah</h3>
@@ -54,16 +55,16 @@
                             <p><strong>Cara Pendaftaran:</strong></p>
                             <ol>
                                 <li>Isi formulir pendaftaran di bawah ini</li>
-                                <li>Data akan tersimpan otomatis di Google Sheets</li>
-                                <li>Tim panitia akan menghubungi Anda untuk konfirmasi</li>
-                                <li><strong>Pendaftaran GRATIS!</strong></li>
+                                <!-- <li>Data akan tersimpan otomatis di Google Sheets</li> -->
+                                <li>Tim panitia akan memberikan list peserta lomba di Grup yang telah diberikan.</li>
                             </ol>
                             <div class="alert alert-info" style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-left: 4px solid #2196f3; border-radius: 4px;">
-                                <strong>📋 Setup Google Form:</strong> Untuk menggunakan form ini, Anda perlu membuat Google Form dan mengupdate ID form serta entry field ID di JavaScript
+                                <strong>📋 Pendaftaran Online:</strong> Form ini akan menyimpan data pendaftaran secara otomatis ke Google Sheets
                             </div>
                         </div>
                         
-                        <form id="registration-form" class="custom-form">
+                        <form id="registration-form" class="custom-form" data-competition="Yel-yel Kelompok">
+                            <input type="hidden" name="competition" value="Yel-yel Kelompok">
                             <div class="form-group">
                                 <label for="name">Nama Lengkap *</label>
                                 <input type="text" id="name" name="name" required>
@@ -198,5 +199,6 @@
             <p>&copy; 2025 Multimedia OSIS Kelompok 3</p>
         </div>
     </footer>
+    <script src="form-handler.js"></script>
 </body>
 </html>

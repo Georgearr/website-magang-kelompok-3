@@ -59,11 +59,12 @@
                                 <li><strong>Pendaftaran GRATIS!</strong></li>
                             </ol>
                             <div class="alert alert-info" style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-left: 4px solid #2196f3; border-radius: 4px;">
-                                <strong>📋 Setup Google Form:</strong> Untuk menggunakan form ini, Anda perlu membuat Google Form dan mengupdate ID form serta entry field ID di JavaScript
+                                <strong>📋 Pendaftaran Online:</strong> Form ini akan menyimpan data pendaftaran secara otomatis ke database
                             </div>
                         </div>
                         
-                        <form id="registration-form" class="custom-form">
+                        <form id="registration-form" class="custom-form" data-competition="Trilomba">
+                            <input type="hidden" name="competition" value="Trilomba">
                             <div class="form-group">
                                 <label for="name">Nama Lengkap *</label>
                                 <input type="text" id="name" name="name" required>
@@ -107,86 +108,7 @@
                         
                         <div id="form-message" class="form-message" style="display: none;"></div>
                         
-                        <script>
-                        // Google Forms configuration for Trilomba
-                        const GOOGLE_FORM_CONFIG = {
-                            formId: 'YOUR_TRILOMBA_FORM_ID_HERE',
-                            entries: {
-                                name: 'entry.YOUR_NAME_ENTRY_ID',
-                                class: 'entry.YOUR_CLASS_ENTRY_ID',
-                                phone: 'entry.YOUR_PHONE_ENTRY_ID',
-                                email: 'entry.YOUR_EMAIL_ENTRY_ID',
-                                team_name: 'entry.YOUR_TEAM_NAME_ENTRY_ID',
-                                team_members: 'entry.YOUR_TEAM_MEMBERS_ENTRY_ID',
-                                competition: 'entry.YOUR_COMPETITION_ENTRY_ID'
-                            }
-                        };
-
-                        document.getElementById('registration-form').addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            
-                            const submitBtn = this.querySelector('.submit-btn');
-                            const btnText = submitBtn.querySelector('.btn-text');
-                            const btnLoading = submitBtn.querySelector('.btn-loading');
-                            const messageDiv = document.getElementById('form-message');
-                            
-                            // Show loading state
-                            btnText.style.display = 'none';
-                            btnLoading.style.display = 'inline';
-                            submitBtn.disabled = true;
-                            
-                            // Check if Google Form is properly configured
-                            if (GOOGLE_FORM_CONFIG.formId.includes('YOUR_')) {
-                                messageDiv.innerHTML = '<div class="alert alert-warning">⚠️ Google Form belum dikonfigurasi. Silakan setup Google Form ID dan entry field ID terlebih dahulu di file ini</div>';
-                                messageDiv.style.display = 'block';
-                                btnText.style.display = 'inline';
-                                btnLoading.style.display = 'none';
-                                submitBtn.disabled = false;
-                                return;
-                            }
-                            
-                            // Get form data
-                            const formData = new URLSearchParams();
-                            formData.append(GOOGLE_FORM_CONFIG.entries.name, document.getElementById('name').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.class, document.getElementById('class').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.phone, document.getElementById('phone').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.email, document.getElementById('email').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.team_name, document.getElementById('team_name').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.team_members, document.getElementById('team_members').value);
-                            formData.append(GOOGLE_FORM_CONFIG.entries.competition, 'trilomba');
-                            
-                            // Submit to Google Form
-                            const googleFormURL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_CONFIG.formId}/formResponse`;
-                            
-                            fetch(googleFormURL, {
-                                method: 'POST',
-                                body: formData,
-                                mode: 'no-cors'
-                            })
-                            .then(() => {
-                                // Reset form
-                                this.reset();
-                                
-                                // Show success message
-                                messageDiv.innerHTML = '<div class="alert alert-success">✅ Pendaftaran berhasil! Data Anda telah tersimpan di Google Sheets. Tim panitia akan menghubungi Anda segera.</div>';
-                                messageDiv.style.display = 'block';
-                                
-                                // Scroll to message
-                                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                                messageDiv.innerHTML = '<div class="alert alert-error">❌ Terjadi kesalahan saat mengirim ke Google Forms. Pastikan form ID dan entry field ID sudah benar.</div>';
-                                messageDiv.style.display = 'block';
-                            })
-                            .finally(() => {
-                                // Reset button state
-                                btnText.style.display = 'inline';
-                                btnLoading.style.display = 'none';
-                                submitBtn.disabled = false;
-                            });
-                        });
-                        </script>
+                        <script src="form-handler.js"></script>
                     </div>
                 </div>
             </div>
