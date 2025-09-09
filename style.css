@@ -44,7 +44,7 @@ body {
 /* Clean Hero Section */
 .hero-section {
     min-height: 100vh;
-    background: linear-gradient(to bottom, rgb(122, 70, 14),#b14a27, white);
+    background: linear-gradient(to bottom, rgb(122, 70, 14),#b14a27, rgb(201, 201, 201));
     color: white;
     position: relative;
     display: flex;
@@ -814,13 +814,13 @@ body {
     border-bottom: 3px solid #1E93AB;
 }
 
-.video-wrapper::before {
+/* .video-wrapper::before {
     content: '▶';
     font-size: 3rem;
     color: #1E93AB;
     position: absolute;
     z-index: 2;
-}
+} */
 
 .video-wrapper::after {
     content: '';
@@ -871,7 +871,7 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: linear-gradient(135deg, #E62727, #1E93AB);
+        background: linear-gradient(to bottom, rgb(122, 70, 14),#b14a27, rgb(158, 155, 155));
         width: 100%;
         text-align: center;
         transition: 0.3s;
