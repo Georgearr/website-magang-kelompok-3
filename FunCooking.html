@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Cooking - Memoria Aeterna OSIS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="competition.css">
+</head>
+<body>
+    <header class="competition-header">
+        <div class="container">
+            <div class="header-top">
+                <a href="index.html" class="back-btn">
+                    <span class="back-icon">←</span>
+                    <span class="back-text">Kembali ke Beranda</span>
+                </a>
+            </div>
+            <div class="header-content">
+                <h1 class="competition-title">Fun Cooking</h1>
+                <p class="competition-subtitle">Pendaftaran Lomba Memoria Aeterna OSIS 2025</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="competition-detail">
+            <div class="container">
+                <div class="detail-grid">
+                    <div class="competition-info">
+                        <h2>Deskripsi Lomba</h2>
+                        <p>Lomba memasak kreatif antar tim, di mana peserta harus membuat hidangan dari bahan yang telah disediakan panitia dalam waktu terbatas. Penilaian berdasarkan rasa, kreativitas, dan presentasi.</p>
+                        <h3>Syarat dan Ketentuan</h3>
+                        <ul>
+                            <li>Tim terdiri dari 3-5 orang</li>
+                            <li>Bahan utama disediakan panitia, peserta boleh membawa bumbu tambahan sendiri</li>
+                            <li>Waktu memasak maksimal 60 menit</li>
+                            <li>Setiap tim wajib menjaga kebersihan area memasak</li>
+                            <li>Keputusan juri bersifat mutlak</li>
+                        </ul>
+                        
+                        <h3>Hadiah</h3>
+                        <ul class="prizes">
+                            <li>Juara 1: -</li>
+                            <li>Juara 2: -</li>
+                            <li>Juara 3: -</li>
+                        </ul>
+                    </div>
+
+                    <div class="registration-form">
+                        <h2>Form Pendaftaran</h2>
+                        
+                        <div class="form-info">
+                            <p><strong>Cara Pendaftaran:</strong></p>
+                            <ol>
+                                <li>Isi formulir pendaftaran di bawah ini</li>
+                                <li>Data akan tersimpan otomatis di Google Sheets</li>
+                                <li>Tim panitia akan menghubungi Anda untuk konfirmasi</li>
+                                <li><strong>Pendaftaran GRATIS!</strong></li>
+                            </ol>
+                            <div class="alert alert-info" style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-left: 4px solid #2196f3; border-radius: 4px;">
+                                <strong>📋 Pendaftaran Online:</strong> Form ini akan menyimpan data pendaftaran secara otomatis ke Google Sheets
+                            </div>
+                        </div>
+                        
+                        <form id="registration-form" class="custom-form" data-competition="Fun Cooking" data-spreadsheet-api="https://sheet2api.com/v1/mpcUJpeHSdGQ/memoria-aeterna-25">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap *</label>
+                                <input type="text" id="name" name="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="class">Kelas *</label>
+                                <input type="text" id="class" name="Class" placeholder="Contoh: XII IPA 1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Nomor HP/WhatsApp *</label>
+                                <input type="tel" id="phone" name="Phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="competition">Pilih Lomba *</label>
+                                <select id="competition" name="Competition" required class="custom-form" style="width:100%;padding:8px 12px;border:1px solid #ccc;border-radius:4px;font-size:1em;background:#fff;">
+                                    <option value="Fun Cooking" selected>Fun Cooking</option>
+                                    <option value="Yel-yel Kelompok" disabled>Yel-yel Kelompok</option>
+                                    <option value="Golden Egg" disabled>Golden Egg</option>
+                                    <option value="Udara Darat Laut" disabled>Udara Darat Laut</option>
+                                    <option value="Trilomba" disabled>Trilomba</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="team_name">Nama Tim (jika diperlukan)</label>
+                                <input type="text" id="team_name" name="Team Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="team_members">Anggota Tim (jika diperlukan)</label>
+                                <textarea id="team_members" name="Team Members" placeholder="Tulis nama-nama anggota tim, pisahkan dengan koma"></textarea>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="agree" required>
+                                <label for="agree">Saya menyetujui syarat dan ketentuan lomba</label>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Daftar Sekarang</span>
+                                <span class="btn-loading" style="display: none;">Mengirim...</span>
+                            </button>
+                        </form>
+                        
+                        <div id="form-message" class="form-message" style="display: none;"></div>
+                        
+                        <script src="https://sheet2api.com/v1/template.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Multimedia OSIS Kelompok 3</p>
+        </div>
+    </footer>
+    <script src="form-handler.js"></script>
+</body>
+</html>
