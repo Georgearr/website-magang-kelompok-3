@@ -23,7 +23,7 @@
         </div>
     </header>
 
-    <main>
+    <main>  
         <section class="competition-detail">
             <div class="container">
                 <div class="detail-grid">
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         
-                        <form id="registration-form" class="custom-form" data-competition="Trilomba">
+                        <form id="registration-form" class="custom-form" data-competition="Trilomba" data-spreadsheet-api="https://sheet2api.com/v1/4cS3rrFR2KaT/memoria-aeterna-25/Sheet1">
                             <input type="hidden" name="competition" value="Trilomba">
                             <div class="form-group">
                                 <label for="name">Nama Lengkap *</label>
@@ -85,6 +85,17 @@
                                 <input type="email" id="email" name="email">
                             </div>
                             
+                            <div class="form-group">
+                                <label for="competition">Pilih Lomba *</label>
+                                <select id="competition" name="Competition" required>
+                                    <option value="Trilomba" selected>Trilomba</option>
+                                    <option value="Box is Lava" disabled>Box is Lava</option>
+                                    <option value="Golden Egg" disabled>Golden Egg</option>
+                                    <option value="Udara Darat Laut" disabled>Udara Darat Laut</option>
+                                    <option value="Yel-Yel Kelompok" disabled>Yel-Yel Kelompok</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="team_name">Nama Tim (jika diperlukan)</label>
                                 <input type="text" id="team_name" name="team_name">
@@ -109,6 +120,7 @@
                         <div id="form-message" class="form-message" style="display: none;"></div>
                         
                         <script src="form-handler.js"></script>
+                        <script src="https://sheet2api.com/v1/template.js"></script>
                     </div>
                 </div>
             </div>
